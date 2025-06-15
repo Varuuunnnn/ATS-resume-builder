@@ -124,36 +124,36 @@ const ResumePreview = () => {
               </h2>
               <div className="space-y-2 text-xs">
                 {state.personalInfo.phone && (
-                  <div className="flex items-center gap-2">
-                    <svg className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                    <svg style={{ width: '12px', height: '12px', flexShrink: 0 }} fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                     </svg>
                     <span>{state.personalInfo.phone}</span>
                   </div>
                 )}
                 {state.personalInfo.email && (
-                  <div className="flex items-center gap-2">
-                    <svg className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                    <svg style={{ width: '12px', height: '12px', flexShrink: 0 }} fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                       <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                     </svg>
-                    <span className="break-all">{state.personalInfo.email}</span>
+                    <span style={{ wordBreak: 'break-all' }}>{state.personalInfo.email}</span>
                   </div>
                 )}
                 {state.personalInfo.location && (
-                  <div className="flex items-center gap-2">
-                    <svg className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                    <svg style={{ width: '12px', height: '12px', flexShrink: 0 }} fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                     </svg>
                     <span>{state.personalInfo.location}</span>
                   </div>
                 )}
                 {state.personalInfo.websites.map((website) => (
-                  <div key={website.id} className="flex items-center gap-2">
-                    <svg className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <div key={website.id} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                    <svg style={{ width: '12px', height: '12px', flexShrink: 0 }} fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clipRule="evenodd" />
                     </svg>
-                    <span className="break-all text-xs" dangerouslySetInnerHTML={{ __html: renderRichText(website.label) }} />
+                    <span style={{ wordBreak: 'break-all', fontSize: '12px' }} dangerouslySetInnerHTML={{ __html: renderRichText(website.label) }} />
                   </div>
                 ))}
               </div>
@@ -177,8 +177,8 @@ const ResumePreview = () => {
                       <h3 className="text-xs font-semibold mb-1">{category}</h3>
                       <ul className="text-xs space-y-1">
                         {skills.map((skill, index) => (
-                          <li key={index} className="flex items-center gap-1">
-                            <span className="w-1 h-1 bg-current rounded-full flex-shrink-0"></span>
+                          <li key={index} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                            <span style={{ width: '4px', height: '4px', backgroundColor: 'currentColor', borderRadius: '50%', flexShrink: 0 }}></span>
                             {skill}
                           </li>
                         ))}
@@ -209,8 +209,8 @@ const ResumePreview = () => {
                         {section.type === 'list' && section.content.items && 
                           section.content.items.map((item, index) => 
                             item.trim() && (
-                              <div key={index} className="flex items-center gap-1">
-                                <span className="w-1 h-1 bg-current rounded-full flex-shrink-0"></span>
+                              <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                                <span style={{ width: '4px', height: '4px', backgroundColor: 'currentColor', borderRadius: '50%', flexShrink: 0 }}></span>
                                 <span dangerouslySetInnerHTML={{ __html: renderRichText(item) }} />
                               </div>
                             )
@@ -229,12 +229,19 @@ const ResumePreview = () => {
             {/* Profile/Summary */}
             {state.summary && (
               <section className="mb-6">
-                <div className="flex items-center gap-2 mb-3">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                   <div 
-                    className="w-6 h-6 rounded-full flex items-center justify-center"
-                    style={{ backgroundColor: template.colors.accent }}
+                    style={{ 
+                      width: '24px', 
+                      height: '24px', 
+                      borderRadius: '50%', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center',
+                      backgroundColor: template.colors.accent 
+                    }}
                   >
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <svg style={{ width: '12px', height: '12px', color: 'white' }} fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
                     </svg>
                   </div>
@@ -249,8 +256,12 @@ const ResumePreview = () => {
                   </h2>
                 </div>
                 <div 
-                  className="text-xs leading-relaxed pl-8"
-                  style={{ color: template.colors.text }}
+                  style={{ 
+                    fontSize: '12px', 
+                    lineHeight: '1.5', 
+                    paddingLeft: '32px',
+                    color: template.colors.text 
+                  }}
                   dangerouslySetInnerHTML={{ __html: renderRichText(state.summary) }} 
                 />
               </section>
@@ -259,12 +270,19 @@ const ResumePreview = () => {
             {/* Work Experience */}
             {state.workExperience.length > 0 && (
               <section className="mb-6">
-                <div className="flex items-center gap-2 mb-3">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                   <div 
-                    className="w-6 h-6 rounded-full flex items-center justify-center"
-                    style={{ backgroundColor: template.colors.accent }}
+                    style={{ 
+                      width: '24px', 
+                      height: '24px', 
+                      borderRadius: '50%', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center',
+                      backgroundColor: template.colors.accent 
+                    }}
                   >
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <svg style={{ width: '12px', height: '12px', color: 'white' }} fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd" />
                       <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
                     </svg>
@@ -279,34 +297,42 @@ const ResumePreview = () => {
                     Work Experience
                   </h2>
                 </div>
-                <div className="pl-8 space-y-4">
+                <div style={{ paddingLeft: '32px' }}>
                   {state.workExperience.map((experience) => (
-                    <div key={experience.id}>
-                      <div className="mb-2">
+                    <div key={experience.id} style={{ marginBottom: '16px' }}>
+                      <div style={{ marginBottom: '8px' }}>
                         <h3 
-                          className="text-sm font-bold"
-                          style={{ color: template.colors.text }}
+                          style={{ 
+                            fontSize: '14px', 
+                            fontWeight: 'bold',
+                            color: template.colors.text 
+                          }}
                           dangerouslySetInnerHTML={{ __html: renderRichText(experience.company) }} 
                         />
                         <p 
-                          className="text-xs font-medium"
-                          style={{ color: template.colors.textLight }}
+                          style={{ 
+                            fontSize: '12px', 
+                            fontWeight: '500',
+                            color: template.colors.textLight 
+                          }}
                           dangerouslySetInnerHTML={{ __html: renderRichText(experience.position) }} 
                         />
                         <p 
-                          className="text-xs"
-                          style={{ color: template.colors.textLight }}
+                          style={{ 
+                            fontSize: '12px',
+                            color: template.colors.textLight 
+                          }}
                         >
                           {formatDate(experience.startDate)} - {experience.current ? 'Present' : formatDate(experience.endDate)}
                         </p>
                       </div>
                       
                       {experience.description.length > 0 && experience.description.some(desc => desc.trim()) && (
-                        <ul className="text-xs space-y-1 mb-2">
+                        <ul style={{ fontSize: '12px', marginBottom: '8px' }}>
                           {experience.description.map((desc, index) => 
                             desc.trim() && (
-                              <li key={index} className="flex items-start gap-2">
-                                <span className="w-1 h-1 bg-current rounded-full flex-shrink-0 mt-2"></span>
+                              <li key={index} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', marginBottom: '4px' }}>
+                                <span style={{ width: '4px', height: '4px', backgroundColor: 'currentColor', borderRadius: '50%', flexShrink: 0, marginTop: '8px' }}></span>
                                 <span dangerouslySetInnerHTML={{ __html: renderRichText(desc) }} />
                               </li>
                             )
@@ -322,12 +348,19 @@ const ResumePreview = () => {
             {/* Education */}
             {state.education.length > 0 && (
               <section className="mb-6">
-                <div className="flex items-center gap-2 mb-3">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
                   <div 
-                    className="w-6 h-6 rounded-full flex items-center justify-center"
-                    style={{ backgroundColor: template.colors.accent }}
+                    style={{ 
+                      width: '24px', 
+                      height: '24px', 
+                      borderRadius: '50%', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center',
+                      backgroundColor: template.colors.accent 
+                    }}
                   >
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <svg style={{ width: '12px', height: '12px', color: 'white' }} fill="currentColor" viewBox="0 0 20 20">
                       <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
                     </svg>
                   </div>
@@ -341,12 +374,15 @@ const ResumePreview = () => {
                     Education
                   </h2>
                 </div>
-                <div className="pl-8 space-y-3">
+                <div style={{ paddingLeft: '32px' }}>
                   {state.education.map((education) => (
-                    <div key={education.id}>
+                    <div key={education.id} style={{ marginBottom: '12px' }}>
                       <h3 
-                        className="text-sm font-bold"
-                        style={{ color: template.colors.text }}
+                        style={{ 
+                          fontSize: '14px', 
+                          fontWeight: 'bold',
+                          color: template.colors.text 
+                        }}
                       >
                         <span dangerouslySetInnerHTML={{ __html: renderRichText(education.degree) }} />
                         {education.field && (
@@ -354,14 +390,18 @@ const ResumePreview = () => {
                         )}
                       </h3>
                       <p 
-                        className="text-xs"
-                        style={{ color: template.colors.textLight }}
+                        style={{ 
+                          fontSize: '12px',
+                          color: template.colors.textLight 
+                        }}
                       >
                         <span dangerouslySetInnerHTML={{ __html: renderRichText(education.institution) }} />
                       </p>
                       <p 
-                        className="text-xs"
-                        style={{ color: template.colors.textLight }}
+                        style={{ 
+                          fontSize: '12px',
+                          color: template.colors.textLight 
+                        }}
                       >
                         {formatDate(education.startDate)} - {formatDate(education.endDate)}
                         {education.gpa && ` • GPA: ${education.gpa}`}
@@ -377,14 +417,14 @@ const ResumePreview = () => {
               <section>
                 {state.achievements.length > 0 && (
                   <div className="mb-4">
-                    <h3 className="text-xs font-bold uppercase tracking-wide mb-2" style={{ color: template.colors.text }}>
+                    <h3 style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px', color: template.colors.text }}>
                       Achievements
                     </h3>
-                    <div className="space-y-1">
+                    <div style={{ marginBottom: '4px' }}>
                       {state.achievements.map((achievement) => (
-                        <div key={achievement.id} className="text-xs flex justify-between">
+                        <div key={achievement.id} style={{ fontSize: '12px', display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
                           <span dangerouslySetInnerHTML={{ __html: renderRichText(achievement.description) }} />
-                          <span className="text-xs ml-2" style={{ color: template.colors.textLight }}>
+                          <span style={{ fontSize: '12px', marginLeft: '8px', color: template.colors.textLight }}>
                             {formatDate(achievement.date)}
                           </span>
                         </div>
@@ -430,24 +470,24 @@ const ResumePreview = () => {
           </h1>
           <div className={`flex flex-wrap gap-4 ${template.typography.bodySize} ${getHeaderJustification()}`} style={{ color: template.colors.textLight }}>
             {state.personalInfo.email && (
-              <span className="flex items-center gap-1">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                <svg style={{ width: '16px', height: '16px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
                 </svg>
                 {state.personalInfo.email}
               </span>
             )}
             {state.personalInfo.phone && (
-              <span className="flex items-center gap-1">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                <svg style={{ width: '16px', height: '16px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
                 {state.personalInfo.phone}
               </span>
             )}
             {state.personalInfo.location && (
-              <span className="flex items-center gap-1">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                <svg style={{ width: '16px', height: '16px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 </svg>
                 {state.personalInfo.location}
@@ -456,18 +496,18 @@ const ResumePreview = () => {
           </div>
           <div className={`flex flex-wrap gap-4 ${template.typography.bodySize} mt-2 ${getHeaderJustification()}`} style={{ color: template.colors.textLight }}>
             {state.personalInfo.websites.map((website) => (
-              <a key={website.id} href={website.url} className="flex items-center gap-1 hover:underline" style={{ color: template.colors.accent }}>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <a key={website.id} href={website.url} style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', color: template.colors.accent, textDecoration: 'none' }}>
+                <svg style={{ width: '16px', height: '16px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9" />
                 </svg>
                 <span dangerouslySetInnerHTML={{ __html: renderRichText(website.label) }} />
               </a>
             ))}
             {state.personalInfo.linkedin && (
-              <a href={state.personalInfo.linkedin} className="hover:underline" style={{ color: template.colors.accent }}>LinkedIn</a>
+              <a href={state.personalInfo.linkedin} style={{ color: template.colors.accent, textDecoration: 'none' }}>LinkedIn</a>
             )}
             {state.personalInfo.github && (
-              <a href={state.personalInfo.github} className="hover:underline" style={{ color: template.colors.accent }}>GitHub</a>
+              <a href={state.personalInfo.github} style={{ color: template.colors.accent, textDecoration: 'none' }}>GitHub</a>
             )}
           </div>
         </div>

@@ -64,6 +64,343 @@ const ResumePreview = () => {
     '--border-color': template.colors.border
   };
 
+  // Sidebar Layout
+  if (template.layout.layoutType === 'sidebar') {
+    return (
+      <div 
+        className="resume-preview bg-white shadow-lg rounded-lg overflow-hidden max-w-2xl mx-auto transition-all duration-300" 
+        style={{ 
+          minHeight: '11in',
+          fontFamily: `var(--body-font), system-ui, sans-serif`,
+          ...templateStyles
+        }}
+      >
+        {/* Header */}
+        <header 
+          className="px-8 py-6"
+          style={{ backgroundColor: template.colors.headerBg || '#4b5563' }}
+        >
+          <h1 
+            className="text-2xl font-bold mb-2"
+            style={{ 
+              fontFamily: `var(--heading-font), system-ui, sans-serif`,
+              fontWeight: template.typography.headingWeight,
+              color: template.colors.primary,
+            }}
+          >
+            {state.personalInfo.fullName || 'YOUR NAME'}
+          </h1>
+          <p 
+            className="text-lg"
+            style={{ 
+              color: template.colors.secondary,
+              fontWeight: '500'
+            }}
+          >
+            {state.workExperience[0]?.position || 'PROFESSIONAL TITLE'}
+          </p>
+        </header>
+
+        {/* Two Column Layout */}
+        <div className="flex">
+          {/* Sidebar */}
+          <aside 
+            className="w-1/3 p-6"
+            style={{ 
+              backgroundColor: template.colors.sidebarBg || '#e5e7eb',
+              color: template.colors.sidebarText || '#374151'
+            }}
+          >
+            {/* Contact */}
+            <section className="mb-6">
+              <h2 
+                className="text-sm font-bold mb-3 uppercase tracking-wide"
+                style={{ 
+                  fontFamily: `var(--heading-font), system-ui, sans-serif`,
+                  color: template.colors.sidebarText || '#374151'
+                }}
+              >
+                Contact
+              </h2>
+              <div className="space-y-2 text-xs">
+                {state.personalInfo.phone && (
+                  <div className="flex items-center gap-2">
+                    <svg className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                    </svg>
+                    <span>{state.personalInfo.phone}</span>
+                  </div>
+                )}
+                {state.personalInfo.email && (
+                  <div className="flex items-center gap-2">
+                    <svg className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                    <span className="break-all">{state.personalInfo.email}</span>
+                  </div>
+                )}
+                {state.personalInfo.location && (
+                  <div className="flex items-center gap-2">
+                    <svg className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                    </svg>
+                    <span>{state.personalInfo.location}</span>
+                  </div>
+                )}
+                {state.personalInfo.websites.map((website) => (
+                  <div key={website.id} className="flex items-center gap-2">
+                    <svg className="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clipRule="evenodd" />
+                    </svg>
+                    <span className="break-all text-xs" dangerouslySetInnerHTML={{ __html: renderRichText(website.label) }} />
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Skills */}
+            {state.skills.length > 0 && (
+              <section className="mb-6">
+                <h2 
+                  className="text-sm font-bold mb-3 uppercase tracking-wide"
+                  style={{ 
+                    fontFamily: `var(--heading-font), system-ui, sans-serif`,
+                    color: template.colors.sidebarText || '#374151'
+                  }}
+                >
+                  Skills
+                </h2>
+                <div className="space-y-3">
+                  {skillsByCategory().map(([category, skills]) => (
+                    <div key={category}>
+                      <h3 className="text-xs font-semibold mb-1">{category}</h3>
+                      <ul className="text-xs space-y-1">
+                        {skills.map((skill, index) => (
+                          <li key={index} className="flex items-center gap-1">
+                            <span className="w-1 h-1 bg-current rounded-full flex-shrink-0"></span>
+                            {skill}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Languages (if any custom sections exist) */}
+            {state.customSections.some(section => section.title.toLowerCase().includes('language')) && (
+              <section className="mb-6">
+                <h2 
+                  className="text-sm font-bold mb-3 uppercase tracking-wide"
+                  style={{ 
+                    fontFamily: `var(--heading-font), system-ui, sans-serif`,
+                    color: template.colors.sidebarText || '#374151'
+                  }}
+                >
+                  Languages
+                </h2>
+                <div className="space-y-2 text-xs">
+                  {state.customSections
+                    .filter(section => section.title.toLowerCase().includes('language'))
+                    .map(section => (
+                      <div key={section.id}>
+                        {section.type === 'list' && section.content.items && 
+                          section.content.items.map((item, index) => 
+                            item.trim() && (
+                              <div key={index} className="flex items-center gap-1">
+                                <span className="w-1 h-1 bg-current rounded-full flex-shrink-0"></span>
+                                <span dangerouslySetInnerHTML={{ __html: renderRichText(item) }} />
+                              </div>
+                            )
+                          )
+                        }
+                      </div>
+                    ))
+                  }
+                </div>
+              </section>
+            )}
+          </aside>
+
+          {/* Main Content */}
+          <main className="flex-1 p-6" style={{ color: template.colors.text }}>
+            {/* Profile/Summary */}
+            {state.summary && (
+              <section className="mb-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <div 
+                    className="w-6 h-6 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: template.colors.accent }}
+                  >
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <h2 
+                    className="text-sm font-bold uppercase tracking-wide"
+                    style={{ 
+                      fontFamily: `var(--heading-font), system-ui, sans-serif`,
+                      color: template.colors.text
+                    }}
+                  >
+                    Profile
+                  </h2>
+                </div>
+                <div 
+                  className="text-xs leading-relaxed pl-8"
+                  style={{ color: template.colors.text }}
+                  dangerouslySetInnerHTML={{ __html: renderRichText(state.summary) }} 
+                />
+              </section>
+            )}
+
+            {/* Work Experience */}
+            {state.workExperience.length > 0 && (
+              <section className="mb-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <div 
+                    className="w-6 h-6 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: template.colors.accent }}
+                  >
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd" />
+                      <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+                    </svg>
+                  </div>
+                  <h2 
+                    className="text-sm font-bold uppercase tracking-wide"
+                    style={{ 
+                      fontFamily: `var(--heading-font), system-ui, sans-serif`,
+                      color: template.colors.text
+                    }}
+                  >
+                    Work Experience
+                  </h2>
+                </div>
+                <div className="pl-8 space-y-4">
+                  {state.workExperience.map((experience) => (
+                    <div key={experience.id}>
+                      <div className="mb-2">
+                        <h3 
+                          className="text-sm font-bold"
+                          style={{ color: template.colors.text }}
+                          dangerouslySetInnerHTML={{ __html: renderRichText(experience.company) }} 
+                        />
+                        <p 
+                          className="text-xs font-medium"
+                          style={{ color: template.colors.textLight }}
+                          dangerouslySetInnerHTML={{ __html: renderRichText(experience.position) }} 
+                        />
+                        <p 
+                          className="text-xs"
+                          style={{ color: template.colors.textLight }}
+                        >
+                          {formatDate(experience.startDate)} - {experience.current ? 'Present' : formatDate(experience.endDate)}
+                        </p>
+                      </div>
+                      
+                      {experience.description.length > 0 && experience.description.some(desc => desc.trim()) && (
+                        <ul className="text-xs space-y-1 mb-2">
+                          {experience.description.map((desc, index) => 
+                            desc.trim() && (
+                              <li key={index} className="flex items-start gap-2">
+                                <span className="w-1 h-1 bg-current rounded-full flex-shrink-0 mt-2"></span>
+                                <span dangerouslySetInnerHTML={{ __html: renderRichText(desc) }} />
+                              </li>
+                            )
+                          )}
+                        </ul>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Education */}
+            {state.education.length > 0 && (
+              <section className="mb-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <div 
+                    className="w-6 h-6 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: template.colors.accent }}
+                  >
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                    </svg>
+                  </div>
+                  <h2 
+                    className="text-sm font-bold uppercase tracking-wide"
+                    style={{ 
+                      fontFamily: `var(--heading-font), system-ui, sans-serif`,
+                      color: template.colors.text
+                    }}
+                  >
+                    Education
+                  </h2>
+                </div>
+                <div className="pl-8 space-y-3">
+                  {state.education.map((education) => (
+                    <div key={education.id}>
+                      <h3 
+                        className="text-sm font-bold"
+                        style={{ color: template.colors.text }}
+                      >
+                        <span dangerouslySetInnerHTML={{ __html: renderRichText(education.degree) }} />
+                        {education.field && (
+                          <span> in <span dangerouslySetInnerHTML={{ __html: renderRichText(education.field) }} /></span>
+                        )}
+                      </h3>
+                      <p 
+                        className="text-xs"
+                        style={{ color: template.colors.textLight }}
+                      >
+                        <span dangerouslySetInnerHTML={{ __html: renderRichText(education.institution) }} />
+                      </p>
+                      <p 
+                        className="text-xs"
+                        style={{ color: template.colors.textLight }}
+                      >
+                        {formatDate(education.startDate)} - {formatDate(education.endDate)}
+                        {education.gpa && ` • GPA: ${education.gpa}`}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Other sections (achievements, awards, certifications, custom) */}
+            {(state.achievements.length > 0 || state.awards.length > 0 || state.certifications.length > 0) && (
+              <section>
+                {state.achievements.length > 0 && (
+                  <div className="mb-4">
+                    <h3 className="text-xs font-bold uppercase tracking-wide mb-2" style={{ color: template.colors.text }}>
+                      Achievements
+                    </h3>
+                    <div className="space-y-1">
+                      {state.achievements.map((achievement) => (
+                        <div key={achievement.id} className="text-xs flex justify-between">
+                          <span dangerouslySetInnerHTML={{ __html: renderRichText(achievement.description) }} />
+                          <span className="text-xs ml-2" style={{ color: template.colors.textLight }}>
+                            {formatDate(achievement.date)}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </section>
+            )}
+          </main>
+        </div>
+      </div>
+    );
+  }
+
+  // Default Single Column Layout
   return (
     <div 
       className="resume-preview bg-white shadow-lg rounded-lg p-8 max-w-2xl mx-auto transition-all duration-300" 

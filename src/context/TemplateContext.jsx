@@ -29,7 +29,41 @@ export const templates = {
       headerStyle: 'centered',
       sectionSpacing: 'mb-6',
       itemSpacing: 'mb-4',
-      borderStyle: 'border-b border-gray-300'
+      borderStyle: 'border-b border-gray-300',
+      layoutType: 'single-column'
+    }
+  },
+  sidebar: {
+    id: 'sidebar',
+    name: 'Professional Sidebar',
+    description: 'Two-column layout with dark header and sidebar design',
+    colors: {
+      primary: '#ffffff',
+      secondary: '#e5e7eb',
+      accent: '#374151',
+      text: '#111827',
+      textLight: '#6b7280',
+      background: '#ffffff',
+      border: '#d1d5db',
+      headerBg: '#4b5563',
+      sidebarBg: '#e5e7eb',
+      sidebarText: '#374151'
+    },
+    typography: {
+      headingFont: 'Inter',
+      bodyFont: 'Inter',
+      headingWeight: '700',
+      bodyWeight: '400',
+      headingSize: 'text-lg',
+      bodySize: 'text-sm',
+      lineHeight: 'leading-relaxed'
+    },
+    layout: {
+      headerStyle: 'left-aligned',
+      sectionSpacing: 'mb-6',
+      itemSpacing: 'mb-4',
+      borderStyle: 'border-b border-gray-300',
+      layoutType: 'sidebar'
     }
   },
   classic: {
@@ -58,7 +92,8 @@ export const templates = {
       headerStyle: 'left-aligned',
       sectionSpacing: 'mb-5',
       itemSpacing: 'mb-3',
-      borderStyle: 'border-b-2 border-gray-800'
+      borderStyle: 'border-b-2 border-gray-800',
+      layoutType: 'single-column'
     }
   },
   creative: {
@@ -87,7 +122,8 @@ export const templates = {
       headerStyle: 'centered',
       sectionSpacing: 'mb-7',
       itemSpacing: 'mb-4',
-      borderStyle: 'border-b-2 border-purple-300'
+      borderStyle: 'border-b-2 border-purple-300',
+      layoutType: 'single-column'
     }
   },
   minimal: {
@@ -116,7 +152,8 @@ export const templates = {
       headerStyle: 'left-aligned',
       sectionSpacing: 'mb-8',
       itemSpacing: 'mb-5',
-      borderStyle: 'border-b border-gray-200'
+      borderStyle: 'border-b border-gray-200',
+      layoutType: 'single-column'
     }
   },
   executive: {
@@ -145,7 +182,8 @@ export const templates = {
       headerStyle: 'centered',
       sectionSpacing: 'mb-6',
       itemSpacing: 'mb-4',
-      borderStyle: 'border-b-2 border-blue-600'
+      borderStyle: 'border-b-2 border-blue-600',
+      layoutType: 'single-column'
     }
   },
   tech: {
@@ -174,7 +212,8 @@ export const templates = {
       headerStyle: 'left-aligned',
       sectionSpacing: 'mb-6',
       itemSpacing: 'mb-4',
-      borderStyle: 'border-b border-emerald-300'
+      borderStyle: 'border-b border-emerald-300',
+      layoutType: 'single-column'
     }
   },
   elegant: {
@@ -203,7 +242,8 @@ export const templates = {
       headerStyle: 'centered',
       sectionSpacing: 'mb-6',
       itemSpacing: 'mb-4',
-      borderStyle: 'border-b border-amber-300'
+      borderStyle: 'border-b border-amber-300',
+      layoutType: 'single-column'
     }
   },
   corporate: {
@@ -232,7 +272,8 @@ export const templates = {
       headerStyle: 'left-aligned',
       sectionSpacing: 'mb-5',
       itemSpacing: 'mb-3',
-      borderStyle: 'border-b border-gray-400'
+      borderStyle: 'border-b border-gray-400',
+      layoutType: 'single-column'
     }
   },
   artistic: {
@@ -261,7 +302,8 @@ export const templates = {
       headerStyle: 'centered',
       sectionSpacing: 'mb-7',
       itemSpacing: 'mb-4',
-      borderStyle: 'border-b-2 border-red-300'
+      borderStyle: 'border-b-2 border-red-300',
+      layoutType: 'single-column'
     }
   },
   academic: {
@@ -290,7 +332,8 @@ export const templates = {
       headerStyle: 'left-aligned',
       sectionSpacing: 'mb-6',
       itemSpacing: 'mb-4',
-      borderStyle: 'border-b border-blue-300'
+      borderStyle: 'border-b border-blue-300',
+      layoutType: 'single-column'
     }
   }
 };
